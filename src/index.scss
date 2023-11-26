@@ -1,0 +1,211 @@
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+
+  --drawerHandle-w-h : 64px;
+  --drawer-width: 50vw;
+
+  ::-webkit-scrollbar{
+    display:none;
+  }
+}
+
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 100vh;
+  max-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F9EFE7;
+
+  overflow: clip;
+
+
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+button {
+  background-color:transparent;
+}
+
+.drawerHandle {
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  width: var(--drawerHandle-w-h);
+  height: var(--drawerHandle-w-h);
+  background-color: #F0D6D6;
+  filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.6));
+  z-index: 10;
+  transition: all .5s ease;
+  cursor: pointer;
+}
+
+.drawerContainer {
+  position: absolute;
+  top: 0;
+  left: calc(var(--drawer-width) * -1);
+  width: var(--drawer-width);
+  height: 100vh;
+  max-height: 100vh;
+  background-color: #F0D6D6;
+  filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.6));
+  z-index: 20;
+  transition: all .5s ease;
+  cursor: pointer;
+  overflow-y: scroll;
+  
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 32px 0px;
+    background-color: #F0D6D6;
+    transition: all .5s ease;
+    cursor: pointer;
+
+    .playListTitle {
+      font-size: 24px;
+      padding: 32px 16px;
+      border-bottom: 1px solid black;
+      margin-bottom: 16px;
+      width: 95%;
+    }
+
+    .playList {
+      width: 100%;
+
+      .listItem {
+        .button {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          background-color: #F0D6D6;
+  
+          padding: 32px 16px;
+  
+          transition: all .5s ease;
+
+          cursor: pointer;
+
+          &:hover {
+            background-color: #F9EFE7;
+          }
+
+          .cover {
+            width: 96px;
+            height: 96px;
+          }
+  
+          .infoDiv {
+            padding: 0px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+  
+            .title {
+              font-weight: bold;
+              margin-bottom: 4px;
+            }
+  
+            .artist {
+              font-size: 12px;
+            }
+          }
+        }
+
+
+      }
+    }
+
+  }
+}
+
+.openDrawer {
+  transform: translateX(var(--drawer-width));
+}
+
+.audio {
+  visibility: hidden;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  max-width: 768px;
+  height: 100vh;
+  padding: 64px;
+
+  .songContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 128px;
+
+    .coverImg {
+      display: inline-block;
+      height: 300px;
+      width: 300px;
+      border-radius: 100%;
+      margin-bottom: 64px;
+    }
+
+    .title {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .artist {
+      margin-bottom:16px;
+      font-weight: 400;
+    }
+  }
+
+  .playerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width: 100%;
+
+    .playerButton {
+      width: 64px;
+      height: 64px;
+      cursor: pointer;
+      color: #D08888;
+      filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.6));
+    }
+  }
+}
+
+@media screen and (max-width: 512px) {
+  * {
+    --drawer-width: 80vw;
+  }
+}
